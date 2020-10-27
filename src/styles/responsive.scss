@@ -1,0 +1,125 @@
+// Large Desktop
+@media only screen and (min-width: 1600px) {
+  .dashboard-viewport,
+  .page-viewport {
+    flex: 6;
+  }
+
+  #tasksPane {
+    flex: 4;
+  }
+
+  #detailsPane {
+    flex: 1;
+  }
+
+  #tasksPaneContent {
+    width: 700px;
+  }
+
+  // #modal-content {
+  //   width: 40vw;
+  // }
+}
+
+// Desktop
+@media only screen and (min-width: 1280px) and (max-width: 1600px) {
+  .dashboard-viewport,
+  .page-viewport {
+    flex: 5;
+  }
+
+  #tasksPane {
+    flex: 3;
+  }
+
+  #detailsPane {
+    flex: 1;
+  }
+
+  #tasksPaneContent {
+    width: 650px;
+  }
+
+  // #modal-content {
+  //   width: 40vw;
+  // }
+}
+
+// Laptop
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+  .dashboard-viewport,
+  .page-viewport {
+    flex: 4;
+  }
+
+  #tasksPaneContent {
+    width: 500px;
+  }
+}
+
+// Tablet
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .dashboard-viewport,
+  .page-viewport {
+    flex: 4;
+  }
+
+  #tasksPaneContent {
+    width: 400px;
+  }
+
+  .dashboard-sidebar-mobile {
+    width: 40vw;
+  }
+  // #modal-content {
+  //   width: 350px;
+  // }
+}
+
+// Mobile
+@media only screen and (max-width: 600px) {
+  .dashboard-sidebar {
+    flex: 0;
+  }
+
+  #detailsPane {
+    flex: 0;
+  }
+
+  #intro {
+    flex-direction: column;
+  }
+
+  #intro-promo {
+    max-height: 50px;
+    margin: 30px;
+    // order: -1;
+  }
+
+  #intro-description {
+    max-height: 50vh;
+    margin: 30px;
+  }
+
+  #labels,
+  #actions,
+  #workspacesList {
+    height: auto;
+  }
+}
+
+// Low height
+@media only screen and (max-height: 600px) {
+  #actions {
+    height: 0%;
+  }
+
+  #labels {
+    height: 50%;
+  }
+
+  #workspacesList {
+    height: 50%;
+  }
+}
