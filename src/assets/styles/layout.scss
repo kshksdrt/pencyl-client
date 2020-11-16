@@ -6,12 +6,7 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background: rgb(255, 224, 178);
-  background: linear-gradient(
-    16deg,
-    rgba(154, 255, 216, 0.3) 0%,
-    rgba(23, 74, 151, 0.3) 100%
-  );
+  background: var(--gray0);
 }
 
 .dashboard {
@@ -305,4 +300,9 @@
     text-align: justify;
     margin: 0.7rem 0;
   }
+}
+
+.container {
+  width: clamp(60vw, 800px, 100vw);
+  margin: auto;
 }
