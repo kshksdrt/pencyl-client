@@ -46,7 +46,12 @@
       <!-- Footer -->
       <p class="text-medium mt4">
         Don't have an account yet?
-        <a href="https://accounts-ellipsis.netlify.app/">Create one here</a>
+        <a
+          href="https://accounts-ellipsis.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Create one here</a
+        >
       </p>
     </div>
   </div>
@@ -54,8 +59,10 @@
 
 <script setup="_, {emit}">
 import { defineComponent, ref } from "vue";
+import router from "@/router";
+
 import validator from "@/utilities/validator.js";
-import api from "@/utilities/api";
+import api from "@/store/api";
 
 const errorMessage = ref([]);
 const email = ref("");
@@ -71,21 +78,17 @@ function checkForErrors() {
     errorMessage.value.push("Password must be 14 to 32 characters long.");
 }
 
-function checkForErrorsAndSignin() {
+async function checkForErrorsAndSignin() {
   checkForErrors();
-  if (errorMessage.value.length === 0) {
-    signupInProgress.value = true;
-    api
-      .signin(email.value, password.value)
-      .then((tokens) => {
-        console.log(tokens);
-      })
-      .catch((error) => {
-        console.log(error);
-        errorMessage.value.push(error);
-      })
-      .finally(() => (signupInProgress.value = false));
-  }
+  if (errorMessage.value.length > 1) return;
+  signupInProgress.value = true;
+
+  const status = await api.signin(email.value, password.value);
+  const { success, error } = status;
+  if (error) errorMessage.value.push(error);
+  if (success) router.push("/dashboard");
+
+  signupInProgress.value = false;
 }
 
 function closeModal() {

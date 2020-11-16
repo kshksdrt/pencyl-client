@@ -1,5 +1,5 @@
 import ls from "./localStorage";
-import state from "../store/state";
+import { mutations } from "../store/state";
 
 // Constants
 const LS_KEYS = {
@@ -8,5 +8,5 @@ const LS_KEYS = {
 
 export default function() {
   const lsTheme = ls.get(LS_KEYS.theme);
-  state.setTheme(lsTheme);
+  mutations.setTheme(lsTheme);
 }
