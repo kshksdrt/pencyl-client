@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
 
+// v0.1.0
+
 import { register } from 'register-service-worker'
 
 if (process.env.NODE_ENV === 'production') {

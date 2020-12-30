@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-import './registerServiceWorker'
-import router from './router'
+import App from '@/App.vue'
+import '@/registerServiceWorker'
+import router from '@/router'
+import "tailwindcss/tailwind.css"
 
 import globals from '@/components/BaseComponents/globalComponents.ts'
 

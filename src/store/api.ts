@@ -2,7 +2,8 @@ import axios from 'axios'
 import { mutations } from './state'
 
 function signin(email: string, password: string) {
-    return axios({
+  return new Promise((resolve, reject) => {
+    axios({
       method: "post",
       url: `${process.env.VUE_APP_SERVER_URL}/user/signin`,
       data: { email, password },
@@ -11,13 +12,19 @@ function signin(email: string, password: string) {
         const { success, tokens, error } = res.data;
         if (success === true) {
           mutations.setTokens(tokens)
-          return { success }
+          resolve(true)
+          return
         }
-        if (success === false || error) return { error: error || "Error" }
+        if (success === false || error) {
+          reject(error || "Error" )
+          return
+        }
       })
       .catch((err) => {
-        if (err.response?.data?.error) return { error: err.response?.data?.error || "Error" };
+        reject(err.response?.data?.error || "Error" )
+        return
       })
+  })
 }
 
 export default {

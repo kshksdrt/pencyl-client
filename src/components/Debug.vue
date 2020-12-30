@@ -1,25 +1,46 @@
 <template>
-  <teleport v-show="enabled" to="#overlay">
-    <div class="fixed top left">
-      <p>
-        {{
-          `${state.token.value} + ${state.refresh.value} + ${state.theme.value}`
-        }}
-      </p>
-    </div>
-  </teleport>
+	<teleport to="#overlay">
+		<div id="info" v-show="enabled" @click="enabled = !enabled">
+			<p>
+				{{
+					`
+						${$state.token}
+						${$state.refresh}
+						${$state.theme}
+          `
+				}}
+			</p>
+		</div>
+	</teleport>
 </template>
 
-<script setup>
-import { ref } from "vue";
-import { state } from "@/store/state.ts";
+<script lang="ts">
+import { defineComponent, inject, ref } from "vue";
 
-const enabled = ref(true);
-export { state, enabled };
+export default defineComponent({
+	name: "Debug",
+	inject: ["$state"],
+	setup() {
+		const $state = inject("$state");
+		const enabled = ref(true);
 
-export default {
-  name: "Debug",
-};
+		console.log($state);
+
+		return { enabled };
+	},
+});
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+#info {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	word-wrap: break-word;
+}
+#info > p {
+	padding: 10px;
+	background: rgba(121, 121, 121, 0.131);
+}
+</style>
