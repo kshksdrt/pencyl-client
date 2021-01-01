@@ -1,6 +1,6 @@
 {
   "name": "pencyl-client",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
@@ -12,7 +12,7 @@
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
+    "vue-router": "^4.0.2",
     "xstate": "^4.15.3"
   },
   "devDependencies": {

@@ -60,10 +60,13 @@ const sessionMachine = Machine(
         ls.write(getKey("refresh"), context.refresh);
       },
       navigateToDashboard: () => {
-        router.push("/dashboard")
+        console.log("Navigating to dashboard")
+        console.log(router)
+        router.push({ name: "Dashboard" })
       },
       navigateToHome: () => {
-        router.push("/")
+        console.log("Navigating to home")
+        router.push({ name: "Home" })
       }
     },
     guards: {

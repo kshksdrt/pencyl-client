@@ -77,11 +77,10 @@ $gray9: #161616;
 	--text: var(--gray0);
 }
 
-.app {
+.theme-content {
 	color: var(--text);
-	background: var(--bg);
+	background: var(--bg-0);
 	transition: background 250ms ease-in-out, color 250ms ease-in-out;
-	// overflow: hidden;
 }
 
 * {

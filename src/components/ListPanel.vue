@@ -8,12 +8,16 @@
 				<div :class="css.signOut" @click="signOut">
 					Sign out
 				</div>
+				<div :class="css.signOut" @click="toggleTheme">
+					Theme
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
+import settings from "@/core/stores/settings";
 import sessionMachine from "@/core/xstate/sessionMachine";
 import { defineComponent } from "vue";
 
@@ -30,9 +34,18 @@ export default defineComponent({
 		function signOut() {
 			sessionMachine.sendEvent("SIGN_OUT");
 		}
+
+		function toggleTheme() {
+			let theme;
+			if (settings.state.theme === "light") theme = "dark";
+			if (settings.state.theme === "dark") theme = "light";
+			settings.mutate("setTheme", theme);
+		}
+
 		return {
 			css,
 			signOut,
+			toggleTheme,
 		};
 	},
 });

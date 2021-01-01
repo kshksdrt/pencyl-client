@@ -3,7 +3,7 @@ import axios from 'axios';
 import { TokenPair } from '@/core/types';
 
 import sessionMachine from '@/core/xstate/sessionMachine';
-import { mutations } from '@/core/state';
+import settings from '@/core/stores/settings';
 
 const exampleUser = {
   name: 'Example',
@@ -46,11 +46,11 @@ function signin(email: string, password: string) {
 function getUser(oldTokens: TokenPair) {
   return new Promise((resolve, reject) => {
     const onSuccess = (tokens: TokenPair, user: object) => {
+      settings.mutate("storeUser", user)
       sessionMachine.sendEvent({
         type: "SIGN_IN",
         payload: tokens
       });
-      mutations.storeUser(user)
       resolve(true)
     }
     const onFailure = (error: string) => {
@@ -61,6 +61,7 @@ function getUser(oldTokens: TokenPair) {
     if (+process.env.VUE_APP_MOCK_API === 1) {
       return onSuccess({token: "foo", refresh: "bar"}, exampleUser)
     }
+
     axios({
       method: "get",
       url: `${process.env.VUE_APP_SERVER_URL}/app-pencyl/user`,

@@ -112,7 +112,7 @@ export default defineComponent({
 
 .btn-link {
 	background: #4caf5000;
-	color: var(--gray8);
+	color: var(--bg-2);
 }
 
 .btn-link:hover {

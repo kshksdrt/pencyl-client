@@ -36,7 +36,7 @@
 			</div>
 			<div class="flex-end mt-3 mb-3">
 				<div class="loader mr-3" v-if="signupInProgress"></div>
-				<v-button
+				<Button
 					text="Sign in"
 					theme="primary"
 					hasGradient
@@ -56,15 +56,17 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import router from "@/config/router";
 
 import validator from "@/utilities/validator";
 import api from "@/core/api";
+
+import Button from "@/components/BaseComponents/Button.vue";
 
 const signupUrl = process.env.VUE_APP_SIGNUP_URL;
 
 export default defineComponent({
 	name: "Login",
+	components: { Button },
 	setup(_, context) {
 		const errorMessage = ref([] as string[]);
 		const email = ref("");
@@ -87,7 +89,6 @@ export default defineComponent({
 
 			api
 				.signin(email.value, password.value)
-				.then(() => router.push("/dashboard"))
 				.catch((error) => errorMessage.value.push(error))
 				.finally(() => (signupInProgress.value = false));
 		}

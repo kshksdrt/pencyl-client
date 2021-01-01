@@ -9,10 +9,10 @@
 			<p>
 				{{
 					`
+						${sessionState.value}
 						${sessionContext.token}
 						${sessionContext.refresh}
-						${state.theme}
-						${sessionState.value}
+						${settings.theme}
           `
 				}}
 			</p>
@@ -27,7 +27,7 @@ import { defineComponent, inject, ref } from "vue";
 export default defineComponent({
 	name: "Debug",
 	setup() {
-		const state = inject("state");
+		const settings = inject("settings");
 
 		const enabled = ref(true);
 		const position = ref("bottom" as "top" | "bottom");
@@ -46,7 +46,7 @@ export default defineComponent({
 			enabled,
 			position,
 			togglePosition,
-			state,
+			settings,
 			sessionState,
 			sessionContext,
 		};

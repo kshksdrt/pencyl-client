@@ -9,19 +9,19 @@ const routes: Array<RouteRecordRaw> = [
     component: Home
   },
   {
-    path: '/dashboard',
+    path: '/dashboard/',
     name: 'Dashboard',
     component: Dashboard
   },
   {
-    path: '/about',
+    path: '/about/',
     name: 'About',
     component: () => import('@/components/Pages/About.vue')
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 })
 

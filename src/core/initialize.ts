@@ -1,8 +1,10 @@
 import ls from "@/core/ls/crud";
-
 import api from "@/core/api";
-import { mutations } from "@/core/state";
+import settings from "@/core/stores/settings";
 import sessionMachine from "@/core/xstate/sessionMachine";
+
+import "@/core/ls/watchers"
+import "@/core/watchers"
 
 // Constants
 const LS_KEYS = {
@@ -16,11 +18,13 @@ sessionMachine.startService()
 function testTokens() {
   const token = ls.read(LS_KEYS.token);
   const refresh = ls.read(LS_KEYS.refresh);
-  api.getUser({token, refresh})
+  setTimeout(() => {
+    api.getUser({token, refresh})
+  }, 200)
 }
 
 export default function initialize() {
   const lsTheme = ls.read(LS_KEYS.theme, "light");
-  mutations.setTheme(lsTheme);
+  settings.mutate("setTheme", lsTheme);
   testTokens()
 }

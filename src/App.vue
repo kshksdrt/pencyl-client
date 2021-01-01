@@ -1,5 +1,5 @@
 <template>
-	<div :class="theme">
+	<div class="app">
 		<Debug />
 		<div id="nav"></div>
 		<router-view />
@@ -9,7 +9,7 @@
 <script lang="ts">
 import { defineComponent, provide } from "vue";
 
-import { state } from "@/core/state";
+import settings from "@/core/stores/settings";
 
 import Debug from "@/components/Debug.vue";
 
@@ -17,10 +17,9 @@ export default defineComponent({
 	name: "App",
 	components: { Debug },
 	setup() {
-		provide("state", state);
-		return {
-			theme: state.theme,
-		};
+		provide("settings", settings.state);
+
+		return {};
 	},
 });
 </script>
