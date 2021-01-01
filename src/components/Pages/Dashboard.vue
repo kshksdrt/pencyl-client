@@ -15,8 +15,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import ListPanel from "@/components/ListPanel.vue";
-import Utilities from "@/components/Utilities.vue";
+import ListPanel from "@/components/Dashboard/ListPanel.vue";
+import Utilities from "@/components/Dashboard/Utilities.vue";
 
 const css = {
 	bg: `
