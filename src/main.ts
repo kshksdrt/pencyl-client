@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 import "tailwindcss/tailwind.css"
 
-import router from '@/router'
-import '@/registerServiceWorker'
+import router from '@/config/router'
+import '@/config/registerServiceWorker'
 
 import globals from '@/components/BaseComponents/globalComponents.ts'
 import initialize from './utilities/initialize'

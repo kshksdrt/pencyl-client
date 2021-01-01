@@ -1,7 +1,7 @@
 import { reactive, readonly } from "vue";
 
-import ls from "@/utilities/ls/crud";
-import { getKey } from "@/utilities/ls/keys";
+import ls from "@/core/ls/crud";
+import { getKey } from "@/core/ls/keys";
 
 const THEMES = ["light", "dark"];
 

@@ -1,8 +1,8 @@
-import ls from "@/utilities/ls/crud";
+import ls from "@/core/ls/crud";
 
-import api from "@/store/api";
-import { mutations } from "@/store/state";
-import sessionMachine from "@/xstate/sessionMachine";
+import api from "@/core/api";
+import { mutations } from "@/core/state";
+import sessionMachine from "@/core/xstate/sessionMachine";
 
 // Constants
 const LS_KEYS = {

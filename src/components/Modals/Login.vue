@@ -56,10 +56,10 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import router from "@/router";
+import router from "@/config/router";
 
 import validator from "@/utilities/validator";
-import api from "@/store/api";
+import api from "@/core/api";
 
 const signupUrl = process.env.VUE_APP_SIGNUP_URL;
 

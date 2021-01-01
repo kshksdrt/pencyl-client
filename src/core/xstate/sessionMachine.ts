@@ -1,9 +1,9 @@
 import { readonly, ref } from 'vue';
 import { AnyEventObject, interpret, Machine } from 'xstate';
 
-import router from '@/router';
-import ls from '@/utilities/ls/crud'
-import { getKey } from '@/utilities/ls/keys'
+import router from '@/config/router';
+import ls from '@/core/ls/crud'
+import { getKey } from '@/core/ls/keys'
 
 const sessionMachine = Machine(
   // Config

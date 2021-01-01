@@ -7,13 +7,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, InjectionKey, provide } from "vue";
+import { defineComponent, provide } from "vue";
 
-import { state } from "@/store/state";
-import sessionMachine from "@/xstate/sessionMachine";
+import { state } from "@/core/state";
 
 import Debug from "@/components/Debug.vue";
-import { interpret } from "xstate";
 
 export default defineComponent({
 	name: "App",

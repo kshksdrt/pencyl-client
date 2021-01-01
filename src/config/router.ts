@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '@/views/Home.vue'
-import Dashboard from '@/views/Dashboard.vue'
+import Home from '@/components/Pages/Home.vue'
+import Dashboard from '@/components/Pages/Dashboard.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/about',
     name: 'About',
-    component: () => import('@/views/About.vue')
+    component: () => import('@/components/Pages/About.vue')
   }
 ]
 

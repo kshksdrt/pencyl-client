@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import sessionMachine from "@/xstate/sessionMachine";
+import sessionMachine from "@/core/xstate/sessionMachine";
 import { defineComponent } from "vue";
 
 const css = {

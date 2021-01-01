@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import sessionMachine from "@/xstate/sessionMachine";
+import sessionMachine from "@/core/xstate/sessionMachine";
 import { defineComponent, inject, ref } from "vue";
 
 export default defineComponent({

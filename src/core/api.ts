@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import { TokenPair } from '@/types/app';
+import { TokenPair } from '@/core/types';
 
-import sessionMachine from '@/xstate/sessionMachine';
-import { mutations } from '@/store/state';
+import sessionMachine from '@/core/xstate/sessionMachine';
+import { mutations } from '@/core/state';
 
 const exampleUser = {
   name: 'Example',
