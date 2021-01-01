@@ -1,54 +1,32 @@
 import { reactive, readonly } from "vue";
-import ls from "@/utilities/localStorage";
 
-// Constants
-const LS_KEYS = {
-  theme: "pencyl.theme",
-  token: "pencyl.token",
-  refresh: "pencyl.refresh",
-};
+import ls from "@/utilities/ls/crud";
+import { getKey } from "@/utilities/ls/keys";
 
 const THEMES = ["light", "dark"];
 
-interface TokenPair {
-  token: string;
-  refresh: string;
-}
-
 // state
-const state = reactive({
+const app = reactive({
   theme: "light",
-  token: "",
-  refresh: "",
 });
 
 // Mutations
-function toggleTheme() {
-  state.theme === "dark" ? (state.theme = "light") : (state.theme = "dark");
-  console.log("MUTATION", "toggleTheme");
-}
-
-function setTheme(payload: string) {
-  if (!THEMES.includes(payload)) return;
-  state.theme = payload;
-  ls.set(LS_KEYS.theme, payload);
-  console.log("MUTATION", "setTheme");
-}
-
-function setTokens(payload: TokenPair) {
-  const { token, refresh } = payload;
-  // if (token.length !== 64 || refresh.length !== 64) return;
-  state.token = token;
-  state.refresh = refresh;
-  ls.set(LS_KEYS.token, token);
-  ls.set(LS_KEYS.refresh, refresh);
-  console.log("MUTATION", "setTokens");
-}
-
-export const $state = readonly(state);
-
 export const mutations = {
-  toggleTheme,
-  setTheme,
-  setTokens,
+  toggleTheme() {
+    app.theme === "dark" ? (app.theme = "light") : (app.theme = "dark");
+    console.log("MUTATION", "toggleTheme");
+  },
+
+  setTheme(payload: string) {
+    if (!THEMES.includes(payload)) return;
+    app.theme = payload;
+    ls.write(getKey('theme'), payload);
+    console.log("MUTATION", "setTheme");
+  },
+
+  storeUser(payload: object) {
+    console.log(payload)
+  }
 };
+
+export const state = readonly(app);

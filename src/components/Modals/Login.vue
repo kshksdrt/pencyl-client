@@ -65,7 +65,7 @@ const signupUrl = process.env.VUE_APP_SIGNUP_URL;
 
 export default defineComponent({
 	name: "Login",
-	setup(_, ctx) {
+	setup(_, context) {
 		const errorMessage = ref([] as string[]);
 		const email = ref("");
 		const password = ref("");
@@ -93,7 +93,7 @@ export default defineComponent({
 		}
 
 		function closeModal() {
-			ctx.emit("close-modal");
+			context.emit("close-modal");
 		}
 
 		return {

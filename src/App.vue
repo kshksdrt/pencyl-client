@@ -6,24 +6,22 @@
 	</div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+import { defineComponent, InjectionKey, provide } from "vue";
 
-import { $state } from "@/store/state";
+import { state } from "@/store/state";
+import sessionMachine from "@/xstate/sessionMachine";
 
-import Debug from "@/components/Debug";
+import Debug from "@/components/Debug.vue";
+import { interpret } from "xstate";
 
 export default defineComponent({
 	name: "App",
 	components: { Debug },
-	provide() {
-		return {
-			$state,
-		};
-	},
 	setup() {
+		provide("state", state);
 		return {
-			theme: $state.theme,
+			theme: state.theme,
 		};
 	},
 });

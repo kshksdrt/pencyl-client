@@ -1,12 +1,18 @@
 <template>
 	<teleport to="#overlay">
-		<div id="info" v-show="enabled" @click="enabled = !enabled">
+		<div
+			id="info"
+			v-show="enabled"
+			@click="togglePosition"
+			:class="`${position}-0`"
+		>
 			<p>
 				{{
 					`
-						${$state.token}
-						${$state.refresh}
-						${$state.theme}
+						${sessionContext.token}
+						${sessionContext.refresh}
+						${state.theme}
+						${sessionState.value}
           `
 				}}
 			</p>
@@ -15,18 +21,35 @@
 </template>
 
 <script lang="ts">
+import sessionMachine from "@/xstate/sessionMachine";
 import { defineComponent, inject, ref } from "vue";
 
 export default defineComponent({
 	name: "Debug",
-	inject: ["$state"],
 	setup() {
-		const $state = inject("$state");
+		const state = inject("state");
+
 		const enabled = ref(true);
+		const position = ref("bottom" as "top" | "bottom");
+		function togglePosition() {
+			if (position.value === "top") {
+				position.value = "bottom";
+			} else {
+				position.value = "top";
+			}
+		}
 
-		console.log($state);
+		const sessionState = sessionMachine.state;
+		const sessionContext = sessionMachine.context;
 
-		return { enabled };
+		return {
+			enabled,
+			position,
+			togglePosition,
+			state,
+			sessionState,
+			sessionContext,
+		};
 	},
 });
 </script>
@@ -34,9 +57,7 @@ export default defineComponent({
 <style scoped>
 #info {
 	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
+	width: 100vw;
 	word-wrap: break-word;
 }
 #info > p {

@@ -28,13 +28,13 @@ const css = {
 		md:my-10 md:mx-auto md:w-4/5 md:shadow md:border md:rounded lg:w-8/12
 	`,
 	list: `
-		w-full my-4 border-bg3 border
-		sm:w-2/5 sm:m-0 sm:rounded-l sm:border-0 sm:border-r
+		w-full my-4 border-bg3 border rounded
+		sm:w-2/5 sm:m-0 sm:rounded-none sm:rounded-l sm:border-0 sm:border-r
 		md:w-4/12
 	`,
 	utils: `
-		w-full my-4 border-bg3 border
-		sm:w-3/5 sm:m-0 sm:rounded-r sm:border-0
+		w-full my-4 border-bg3 border rounded
+		sm:w-3/5 sm:m-0 sm:rounded-none sm:rounded-r sm:border-0
 		md:w-8/12
 	`,
 };

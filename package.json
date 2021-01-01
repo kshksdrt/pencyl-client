@@ -1,6 +1,6 @@
 {
   "name": "pencyl-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
@@ -12,7 +12,8 @@
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-0",
+    "xstate": "^4.15.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.2",
