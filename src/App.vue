@@ -7,20 +7,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, provide } from "vue";
-
-import settings from "@/core/stores/settings";
+import { defineComponent } from "vue";
 
 import Debug from "@/components/Debug.vue";
 
 export default defineComponent({
 	name: "App",
 	components: { Debug },
-	setup() {
-		provide("settings", settings.state);
-
-		return {};
-	},
 });
 </script>
 

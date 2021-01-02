@@ -1,15 +1,37 @@
 import axios from 'axios';
 
-import { TokenPair } from '@/core/types';
+import { TokenPair, User } from '@/core/types';
 
 import sessionMachine from '@/core/xstate/sessionMachine';
-import settings from '@/core/stores/settings';
+import { $mutate } from '@/core/stores/index';
 
-const exampleUser = {
+const exampleUser: User = {
   name: 'Example',
   email: 'example@example.com',
   settings: {},
-  _id: "7fedbc0d17ad3f2cc02278c2",
+  _id: "7fedbc0d17adc2",
+  data: {
+    lists: [
+      {
+        _id: "2cc0nr3fgst2278i",
+        name: "Shoppping",
+        hasCheckbox: true,
+        itemsHaveDesc: false,
+        hasCounts: false,
+        hasIcons: false,
+        items: [],
+      },
+      {
+        _id: "i2cc0nr3fgs278t2",
+        name: "To do list",
+        hasCheckbox: true,
+        itemsHaveDesc: false,
+        hasCounts: false,
+        hasIcons: false,
+        items: [],
+      },
+    ]
+  },
 }
 
 function signin(email: string, password: string) {
@@ -45,8 +67,8 @@ function signin(email: string, password: string) {
 
 function getUser(oldTokens: TokenPair) {
   return new Promise((resolve, reject) => {
-    const onSuccess = (tokens: TokenPair, user: object) => {
-      settings.mutate("storeUser", user)
+    const onSuccess = (tokens: TokenPair, user: User) => {
+      $mutate("storeUser", user)
       sessionMachine.sendEvent({
         type: "SIGN_IN",
         payload: tokens

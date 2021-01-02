@@ -12,7 +12,8 @@
 						${sessionState.value}
 						${sessionContext.token}
 						${sessionContext.refresh}
-						${settings.theme}
+						${theme}
+						${JSON.stringify(lists)}
           `
 				}}
 			</p>
@@ -21,14 +22,13 @@
 </template>
 
 <script lang="ts">
+import { $get } from "@/core/stores/index";
 import sessionMachine from "@/core/xstate/sessionMachine";
-import { defineComponent, inject, ref } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
 	name: "Debug",
 	setup() {
-		const settings = inject("settings");
-
 		const enabled = ref(true);
 		const position = ref("bottom" as "top" | "bottom");
 		function togglePosition() {
@@ -46,9 +46,10 @@ export default defineComponent({
 			enabled,
 			position,
 			togglePosition,
-			settings,
 			sessionState,
 			sessionContext,
+			theme: $get.theme,
+			lists: $get.lists,
 		};
 	},
 });

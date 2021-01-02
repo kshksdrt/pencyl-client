@@ -7,10 +7,10 @@ export default {
     try {
       localStorage.setItem(key, JSON.stringify(value))
     } catch {
-      if (log) console.log("Could not write to localStorage")
+      if (log) console.log("[ls]", "Could not write to localStorage")
     }
     const end = Date.now()
-    if (log) console.log(`Took ${end-start} milliseconds to store`)
+    if (log) console.log("[ls]", `Took ${end-start} milliseconds to store`)
   },
   read(key: string, fallback = ""): string {
     let result

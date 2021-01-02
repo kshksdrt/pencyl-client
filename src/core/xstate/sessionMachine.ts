@@ -45,27 +45,26 @@ const sessionMachine = Machine(
   {
     actions: {
       storeTokens: (context, event) => {
-        console.log("Storing tokens")
+        console.log("[xstate]", "Storing tokens")
         context.token = event.payload.token
         context.refresh = event.payload.refresh
       },
       removeTokens: (context) => {
-        console.log("Removing tokens")
+        console.log("[xstate]", "Removing tokens")
         context.token = ""
         context.refresh = ""
       },
       updateLs: (context) => {
-        console.log("Updating Ls")
+        console.log("[xstate]", "Updating Ls")
         ls.write(getKey("token"), context.token);
         ls.write(getKey("refresh"), context.refresh);
       },
       navigateToDashboard: () => {
-        console.log("Navigating to dashboard")
-        console.log(router)
+        console.log("[xstate]", "Navigating to dashboard")
         router.push({ name: "Dashboard" })
       },
       navigateToHome: () => {
-        console.log("Navigating to home")
+        console.log("[xstate]", "Navigating to home")
         router.push({ name: "Home" })
       }
     },

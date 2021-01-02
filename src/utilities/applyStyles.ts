@@ -10,7 +10,6 @@ const themes = [
 ]
 
 export default function(theme: string) {
-  console.log("Applying styles")
   rootNodes.forEach(id => {
     const node = document.getElementById(id)
     if (node) {

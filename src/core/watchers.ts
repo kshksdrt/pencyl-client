@@ -1,6 +1,8 @@
-import { watch } from "vue";
+import { watchEffect } from "vue";
 
-import settings from "@/core/stores/settings";
+import { $get } from "@/core/stores/index";
 import applyStyles from "@/utilities/applyStyles";
 
-watch(settings.theme, applyStyles)
+watchEffect(() => {
+  applyStyles($get.theme.value)
+})

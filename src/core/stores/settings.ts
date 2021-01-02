@@ -1,32 +1,20 @@
-import { computed, reactive, readonly } from "vue";
+import { readonly, ref } from "vue";
 
 import { Theme, MutationsObject } from "@/core/types";
 
-const settings = reactive({
-  theme: "light",
-});
+const theme = ref("light")
+
+const getters = {
+  theme: readonly(theme)
+}
 
 const mutations: MutationsObject = {
   setTheme(payload: Theme) {
-    settings.theme = payload;
+    theme.value = payload;
   },
-
-  storeUser(payload: object) {
-    console.log(payload)
-  }
 };
 
-function mutate<T>(name: string, payload: T) {
-  if (!Object.keys(mutations).includes(name)) {
-    console.log(`${name} is not a valid mutation`)
-    return
-  }
-  console.log("MUTATION", {name, payload});
-  mutations[name](payload)
-}
-
 export default {
-  state: readonly(settings),
-  theme: computed(() => settings.theme),
-  mutate,
+  getters,
+  mutations,
 }

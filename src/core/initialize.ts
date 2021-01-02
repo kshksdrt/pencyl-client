@@ -1,6 +1,6 @@
 import ls from "@/core/ls/crud";
 import api from "@/core/api";
-import settings from "@/core/stores/settings";
+import { $mutate } from "@/core/stores/index";
 import sessionMachine from "@/core/xstate/sessionMachine";
 
 import "@/core/ls/watchers"
@@ -25,6 +25,6 @@ function testTokens() {
 
 export default function initialize() {
   const lsTheme = ls.read(LS_KEYS.theme, "light");
-  settings.mutate("setTheme", lsTheme);
+  $mutate("setTheme", lsTheme);
   testTokens()
 }
