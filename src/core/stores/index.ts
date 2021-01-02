@@ -1,20 +1,25 @@
-import settings from "@/core/stores/settings";
-import user from "@/core/stores/user";
+import * as app from "@/core/stores/app";
+import * as user from "@/core/stores/user";
+import * as settings from "@/core/stores/settings";
+
+import { MutationsObject, Payload } from "@/core/types";
 
 let log = false;
-if (process.env.NODE_ENV === "development") log = false;
+if (process.env.NODE_ENV === "development") log = true;
 
-const mutations = {
-  ...settings.mutations,
+const mutations: MutationsObject = {
+  ...app.mutations,
   ...user.mutations,
+  ...settings.mutations,
 }
 
 export const $get = {
-  ...settings.getters,
+  ...app.getters,
   ...user.getters,
+  ...settings.getters,
 }
 
-export function $mutate<T>(name: string, payload: T) {
+export function $mutate(name: string, payload: Payload) {
   if (!Object.keys(mutations).includes(name)) {
     if (log) console.log("[store]", `${name} is not a valid mutation`)
     return

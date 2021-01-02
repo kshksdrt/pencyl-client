@@ -7,16 +7,17 @@ const user = ref({} as User);
 const remoteActionQueue = ref([] as ActionMeta[])
 
 // Getters
-const getters = {
+export const getters = {
   user: readonly(user),
   lists: computed(() => {
+    console.log("generating lists")
     if (!user.value.data || !user.value.data.lists) return [];
     return user.value.data.lists;
   })
 }
 
 // Mutations
-const mutations: MutationsObject = {
+export const mutations: MutationsObject = {
   storeUser(payload: User) {
     user.value = payload
   },
@@ -24,8 +25,3 @@ const mutations: MutationsObject = {
     remoteActionQueue.value.push(payload)
   }
 };
-
-export default {
-  getters,
-  mutations,
-}

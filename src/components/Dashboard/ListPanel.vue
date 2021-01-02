@@ -2,7 +2,7 @@
 	<div>
 		<div :class="css.actionBar">
 			<div :class="css.title" @click="toggleSelectListModal">
-				<p>Your list</p>
+				<p>{{ selectedList.name || "No lists" }}</p>
 			</div>
 			<div :class="css.menu">
 				<div :class="css.menuItems" @click="toggleTheme">
@@ -20,8 +20,8 @@
 			v-if="selectListModal"
 		>
 			<h1 :class="css.modalTitle">Select a list</h1>
-			<p v-for="list in lists" :key="list._id" @click="selectList">
-				{{ list._id }}
+			<p v-for="list in lists" :key="list._id" @click="selectList(list._id)">
+				{{ list.name }}
 			</p>
 		</Modal>
 	</div>
@@ -37,7 +37,7 @@ import Modal from "@/components/BaseComponents/Modal.vue";
 
 const css = {
 	actionBar: `bg-bg1 flex-between w-full p-2 cursor-default select-none`,
-	title: `font-bold text-green m-2`,
+	title: `font-bold text-green m-2 p-2 hover:bg-bg2`,
 	modalTitle: `font-bold my-4`,
 	menu: `flex-end`,
 	menuItems: `bg-bg2 self p-2 m-2 rounded`,
@@ -55,7 +55,7 @@ export default defineComponent({
 		}
 
 		function toggleTheme() {
-			let theme;
+			let theme = "light";
 			if ($get.theme.value === "light") theme = "dark";
 			if ($get.theme.value === "dark") theme = "light";
 			$mutate("setTheme", theme);
@@ -66,16 +66,18 @@ export default defineComponent({
 		}
 
 		function selectList(_id: string) {
-			console.log(_id);
+			$mutate("selectListById", _id);
+			toggleSelectListModal();
 		}
 
 		return {
 			css,
-			signOut,
 			toggleTheme,
+			signOut,
 			selectListModal,
-			lists: $get.lists,
 			toggleSelectListModal,
+			lists: $get.lists,
+			selectedList: $get.selectedList,
 			selectList,
 		};
 	},

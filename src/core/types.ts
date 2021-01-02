@@ -4,6 +4,8 @@ export interface MutationsObject {
   [key: string]: Function;
 };
 
+export type Payload = string | object | any[];
+
 export interface TokenPair {
   token: string;
   refresh: string;

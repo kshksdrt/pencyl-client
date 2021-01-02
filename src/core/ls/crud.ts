@@ -1,5 +1,5 @@
 let log = false;
-if (process.env.NODE_ENV === "development") log = false;
+if (process.env.NODE_ENV === "development") log = true;
 
 export default {
   write<T>(key: string, value: T) {
