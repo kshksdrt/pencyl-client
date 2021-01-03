@@ -1,5 +1,5 @@
 import { computed, ref } from "vue";
-import { List, MutationsObject } from "@/core/types";
+import { List, MutationsObject } from "@/types/types";
 import * as user from "@/core/stores/user";
 
 const selectedListId = ref("none")

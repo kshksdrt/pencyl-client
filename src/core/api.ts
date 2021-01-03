@@ -1,38 +1,11 @@
 import axios from 'axios';
 
-import { TokenPair, User } from '@/core/types';
+import { TokenPair, User } from '@/types/types';
 
 import sessionMachine from '@/core/xstate/sessionMachine';
 import { $mutate } from '@/core/stores/index';
 
-const exampleUser: User = {
-  name: 'Example',
-  email: 'example@example.com',
-  settings: {},
-  _id: "7fedbc0d17adc2",
-  data: {
-    lists: [
-      {
-        _id: "2cc0nr3fgst2278i",
-        name: "Shoppping",
-        hasCheckbox: true,
-        itemsHaveDesc: false,
-        hasCounts: false,
-        hasIcons: false,
-        items: [],
-      },
-      {
-        _id: "i2cc0nr3fgs278t2",
-        name: "To do list",
-        hasCheckbox: true,
-        itemsHaveDesc: false,
-        hasCounts: false,
-        hasIcons: false,
-        items: [],
-      },
-    ]
-  },
-}
+import exampleUser from "@/lib/exampleUser.json";
 
 function signin(email: string, password: string) {
   return new Promise((resolve, reject) => {

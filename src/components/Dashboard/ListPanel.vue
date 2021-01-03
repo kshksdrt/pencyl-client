@@ -1,8 +1,8 @@
 <template>
-	<div>
+	<div :class="css.container">
 		<div :class="css.actionBar">
 			<div :class="css.title" @click="toggleSelectListModal">
-				<p>{{ selectedList.name || "No lists" }}</p>
+				<h1>{{ selectedList.name || "No lists" }}</h1>
 			</div>
 			<div :class="css.menu">
 				<div :class="css.menuItems" @click="toggleTheme">
@@ -13,6 +13,7 @@
 				</div>
 			</div>
 		</div>
+		<List :class="css.list" v-if="selectedList._id" />
 		<Modal
 			size="small"
 			:class="css.selectListModal"
@@ -34,19 +35,22 @@ import { $get, $mutate } from "@/core/stores/index";
 import sessionMachine from "@/core/xstate/sessionMachine";
 
 import Modal from "@/components/BaseComponents/Modal.vue";
+import List from "@/components/Dashboard/List.vue";
 
 const css = {
-	actionBar: `bg-bg1 flex-between w-full p-2 cursor-default select-none`,
-	title: `font-bold text-green m-2 p-2 hover:bg-bg2`,
+	container: `px-4 pt-2`,
+	actionBar: `flex-between w-full px-2 py-1 cursor-default select-none border-bg2 border-b`,
+	title: `hover:bg-bg2 font-bold text-green m-2 p-2 rounded`,
 	modalTitle: `font-bold my-4`,
 	menu: `flex-end`,
-	menuItems: `bg-bg2 self p-2 m-2 rounded`,
+	menuItems: `bg-bg1 hover:bg-bg2 text-xs m-2 p-2 rounded`,
 	selectListModal: `py-4 px-2`,
+	list: `w-full`,
 };
 
 export default defineComponent({
 	name: "ListPanel",
-	components: { Modal },
+	components: { Modal, List },
 	setup() {
 		const selectListModal = ref(false);
 

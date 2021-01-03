@@ -1,6 +1,6 @@
 import { computed, readonly, ref } from "vue";
 
-import { ActionMeta, MutationsObject, User } from "@/core/types";
+import { ActionMeta, MutationsObject, User } from "@/types/types";
 
 // State
 const user = ref({} as User);

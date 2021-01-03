@@ -13,7 +13,16 @@ export interface TokenPair {
 
 export interface List extends ListConfig {
   _id: string;
-  items: [];
+  items: ListItem[];
+}
+
+export interface ListItem {
+  _id: string;
+  name: string;
+  desc?: string;
+  checked?: boolean;
+  count?: number;
+  icon?: string;
 }
 
 export interface ListConfig {

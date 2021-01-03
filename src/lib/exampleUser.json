@@ -1,0 +1,44 @@
+{
+  "name": "Example",
+  "email": "example@example.com",
+  "settings": {},
+  "_id": "7fedbc0d17adc2",
+  "data": {
+    "lists": [
+      {
+        "_id": "2cc0nr3fgst2278i",
+        "name": "Shopping",
+        "hasCheckbox": true,
+        "itemsHaveDesc": false,
+        "hasCounts": false,
+        "hasIcons": false,
+        "items": [
+          {
+            "_id": "fgdhr545rzgh54tzg",
+            "name": "Tomatoes",
+            "checked": false
+          },
+          {
+            "_id": "fgdhr545rzgh54tzg",
+            "name": "Spaghetti",
+            "checked": false
+          },
+          {
+            "_id": "fgdhr545rzgh54tzg",
+            "name": "Garlic",
+            "checked": false
+          }
+        ]
+      },
+      {
+        "_id": "i2cc0nr3fgs278t2",
+        "name": "To do list",
+        "hasCheckbox": true,
+        "itemsHaveDesc": false,
+        "hasCounts": false,
+        "hasIcons": false,
+        "items": []
+      }
+    ]
+  }
+}

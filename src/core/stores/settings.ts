@@ -1,6 +1,6 @@
 import { readonly, ref } from "vue";
 
-import { Theme, MutationsObject } from "@/core/types";
+import { Theme, MutationsObject } from "@/types/types";
 
 const theme = ref("light")
 

@@ -2,7 +2,7 @@ import * as app from "@/core/stores/app";
 import * as user from "@/core/stores/user";
 import * as settings from "@/core/stores/settings";
 
-import { MutationsObject, Payload } from "@/core/types";
+import { MutationsObject, Payload } from "@/types/types";
 
 let log = false;
 if (process.env.NODE_ENV === "development") log = true;

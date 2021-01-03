@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { Action, ActionMeta, List, UserData } from "@/core/types";
+import { Action, ActionMeta, List, UserData } from "@/types/types";
 import { $get, $mutate } from "@/core/stores/index";
 
 function makeCopyOfData(): UserData {
